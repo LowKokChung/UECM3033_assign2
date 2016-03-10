@@ -54,7 +54,7 @@ def sor(A, b):
     return list(x)
 
 def solve(A, b):
-    condition = True
+    condition = check_condition(A)
     if condition:
         print('Solve by lu(A,b)')
         return lu(A,b)
