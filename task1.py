@@ -10,7 +10,7 @@ def lu(A, b):
 
 def sor(A, b):
     sol = []
-    ITERATION_LIMIT = 10000
+    ITERATION_LIMIT = 5000
     omega = 0.9
     size = len(A)
     
