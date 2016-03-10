@@ -1,10 +1,11 @@
 import numpy as np
-#Your optional code here
+ITERATION_LIMIT=10  
 #You can import some modules or create additional functions
 
 def lu(A, b):
     sol = []
-    # Edit here to implement your code
+    L = np.zeros(n,n) 
+    U = np.zeros(n,n) 
     return list(sol)
 
 def sor(A, b):
