@@ -1,20 +1,60 @@
 import numpy as np
-ITERATION_LIMIT=10  
-#You can import some modules or create additional functions
+import scipy.linalg as lg
 
 def lu(A, b):
     sol = []
-    L = np.zeros(n,n) 
-    U = np.zeros(n,n) 
-    return list(sol)
+    L,U = lg.lu(A,True)
+    y = lg.solve(L,b)
+    x = lg.solve(U,y)
+    return list(x)
 
 def sor(A, b):
     sol = []
-    # Edit here to implement your code
-    return list(sol)
+    ITERATION_LIMIT = 10000
+    omega = 0.9
+    size = len(A)
+    
+    # A = D - L - U
+    D = np.zeros_like(A)
+    for i in range(size):
+        D[i][i] = A[i][i]
+
+    L = np.zeros_like(A)
+    for i in range(size):
+        for j in range(i):
+            L[i][j] = -A[i][j]
+    
+    U = np.zeros_like(A)
+    for i in range(size):
+        for j in range(i+1,size):
+            U[i][j] = -A[i][j]
+    
+    #omega
+    K = np.zeros_like(A)
+    for i in range(size):
+        K[i][i] = 1/D[i][i]
+    eig = lg.eigvals(K)
+    p = max(abs(eig))    
+    p2 = np.power(p,2)
+    omega = 2 * (1 - np.sqrt(1 - p2)) / p2    
+    print ('omega = ' ,omega)
+    
+    omega = 0.6
+    
+    
+    Q = D/omega -L
+    K = np.linalg.inv(Q).dot(Q-A)
+    c = np.linalg.inv(Q).dot(b)
+    x = np.zeros_like(b)
+    
+    
+    for itr in range(ITERATION_LIMIT):
+        x    = K.dot(x) + c
+    
+    return list(x)
 
 def solve(A, b):
-    condition = True # State and implement your condition here
+    condition = True
     if condition:
         print('Solve by lu(A,b)')
         return lu(A,b)
