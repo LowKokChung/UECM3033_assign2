@@ -55,7 +55,7 @@ For a $M \times N$ sized image, the number of zero in $\Sigma$ will be $(N \time
 Put here your lower and better resolution pictures.
 
 The image with lower resolution
-![Handsome_lower_resolution.jpg](Handsome_lower_resoultion.ipg)
+![Handsome_lower_resolution.jpg](Handsome_lower_resolution.ipg)
 
 The image with better resolution
 ![Handsome_better_resolution.jpg](Handsome_better_resolution.jpg)
