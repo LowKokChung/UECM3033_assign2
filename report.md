@@ -20,13 +20,16 @@ Explain how you implement your `task1.py` here.
 
 ## Task 2 -- SVD method and image compression
 
-Put here your picture file (Lenna.png)
+Put here your picture file (Handsome.jpg)
 
-![Lenna.png](Lenna.png)
+![Handsome.jpg](Handsome.jpg)
 
 How many non zero element in $\Sigma$?
 
-Put here your lower and better resolution pictures. Explain how you generate
+Put here your lower and better resolution pictures.
+Handsome_lower_resolution.jpg
+Handsome_better_resolution.jpg
+Explain how you generate
 these pictures from `task2.py`.
 
 What is a sparse matrix?
