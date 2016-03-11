@@ -10,8 +10,7 @@ def lu(A, b):
 
 def sor(A, b):
     sol = []
-    ITERATION_LIMIT = 5000
-    omega = 0.9
+    ITERATION_LIMIT = 100
     size = len(A)
     
     # A = D - L - U
@@ -37,16 +36,12 @@ def sor(A, b):
     p = max(abs(eig))    
     p2 = np.power(p,2)
     omega = 2 * (1 - np.sqrt(1 - p2)) / p2    
-    print ('omega = ' ,omega)
-    
-    omega = 0.6
-    
+    #print ('omega = ' ,omega)
     
     Q = D/omega -L
     K = np.linalg.inv(Q).dot(Q-A)
     c = np.linalg.inv(Q).dot(b)
     x = np.zeros_like(b)
-    
     
     for itr in range(ITERATION_LIMIT):
         x    = K.dot(x) + c
@@ -54,14 +49,21 @@ def sor(A, b):
     return list(x)
 
 def solve(A, b):
-    condition = check_condition(A)
+    try:
+        np.linalg.cholesky(A)
+    
+    except np.linalg.linalg.LinAlgError :
+        #'Solve by lu'
+        condition =  True
+    condition = False 
+    #condition = check_condition(A)
     if condition:
         print('Solve by lu(A,b)')
         return lu(A,b)
     else:
         print('Solve by sor(A,b)')
         return sor(A,b)
-
+                
 if __name__ == "__main__":
     ## import checker
     ## checker.test(lu, sor, solve)
